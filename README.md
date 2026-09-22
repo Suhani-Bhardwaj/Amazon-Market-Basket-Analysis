@@ -1,641 +1,667 @@
-# Amazon Market Basket Analysis & Customer Behavior Analysis
+# Market Basket Analysis with Python - Amazon
 
 ## 📌 Project Overview
 
-This project analyzes Amazon customer behavior using Python to identify purchasing patterns, customer segments, shopping satisfaction, review behavior, recommendation effectiveness, cart abandonment factors, and areas for business improvement.
+This project analyzes Amazon customer shopping behavior using Python. It focuses on customer demographics, purchasing behavior, product categories, search methods, cart abandonment, customer segmentation, satisfaction, reviews, personalized recommendations, service appreciation, and areas for improvement.
 
-The project uses an Amazon customer dataset containing **800 customer responses and 24 attributes** related to demographics, purchasing frequency, product categories, browsing behavior, product search methods, cart behavior, customer reviews, personalized recommendations, shopping satisfaction, and service experience.
-
-The project follows an end-to-end data analytics and machine learning workflow:
-
-**Data Loading → Data Cleaning → Exploratory Data Analysis → Customer Segmentation → K-Means Clustering → Visualization → Business Insights**
-
-The project combines traditional data analysis with **Unsupervised Machine Learning using K-Means Clustering** to identify groups of customers with similar rating and satisfaction patterns.
+The project also uses **K-Means clustering**, an unsupervised machine learning technique, to identify groups of customers with similar behavior based on selected satisfaction and rating-related features.
 
 ---
 
 ## 🎯 Project Objectives
 
-The main objectives of this project are to:
+The main objectives of this project are:
 
-- Understand Amazon customer demographics and purchasing behavior.
-- Identify the most popular product categories.
-- Analyze customer purchase frequency.
-- Understand how customers search for products.
-- Identify major reasons for cart abandonment.
-- Segment customers based on purchasing frequency.
-- Use K-Means clustering to identify customer groups with similar behavioral characteristics.
-- Analyze customer satisfaction and rating patterns.
-- Understand the perceived usefulness and reliability of customer reviews.
-- Analyze personalized recommendation responses.
-- Identify services customers appreciate.
-- Identify areas where customers believe Amazon can improve.
-- Convert customer data into actionable business insights.
+- Clean and prepare the Amazon customer dataset
+- Analyze customer demographics
+- Analyze purchase frequency and shopping behavior
+- Identify the most popular product categories
+- Analyze product search methods
+- Identify major cart abandonment factors
+- Analyze customer satisfaction
+- Create customer profiles based on purchase frequency
+- Analyze customer segments by gender
+- Apply K-Means clustering to customer behavior
+- Analyze recommendation helpfulness and shopping satisfaction
+- Analyze review reliability and helpfulness
+- Analyze personalized recommendation responses
+- Identify the services most appreciated by customers
+- Identify areas where customers feel improvement is required
+- Create visualizations to communicate the findings
 
 ---
 
-## 🛠️ Technologies & Tools
+## 🛠️ Technologies Used
 
-### Programming Language
 - Python
-
-### Libraries
 - Pandas
 - NumPy
 - Matplotlib
 - Seaborn
 - Scikit-learn
-
-### Machine Learning
-- K-Means Clustering
-- Unsupervised Learning
-
-### Development Environment
 - Jupyter Notebook
-
-### Dataset
-- CSV
 
 ---
 
 ## 📂 Project Structure
 
-```text
-Amazon-Market-Basket-Analysis/
-│
-├── Amazon.csv
-├── Market_Basket_Analysis_Amazon.ipynb
-├── README.md
-│
-└── images/
-    ├── age_distribution.png
-    ├── browsing_frequency_pie_chart.png
-    ├── cart_abandonment_factors.png
-    ├── customer_segments.png
-    ├── customer_segments_by_gender.png
-    ├── gender_distribution.png
-    ├── improvement_areas.png
-    ├── kmeans_clusters.png
-    ├── most_popular_product_categories.png
-    ├── personalized_recommendation_responses.png
-    ├── product_search_methods.png
-    ├── purchase_categories_bar_chart.png
-    ├── purchase_frequency_distribution.png
-    ├── recommendation_helpfulness_vs_satisfaction.png
-    ├── recommendation_satisfaction_heatmap.png
-    ├── review_helpfulness.png
-    ├── review_reliability.png
-    ├── service_appreciation.png
-    └── shopping_satisfaction_levels.png
-📊 Dataset
+    MarketBasketAnalysis/
+    │
+    ├── Amazon.csv
+    ├── Market_Basket_Analysis_Amazon.ipynb
+    ├── README.md
+    │
+    └── images/
+        ├── age_distribution.png
+        ├── browsing_frequency_pie_chart.png
+        ├── cart_abandonment_factors.png
+        ├── customer_segments.png
+        ├── customer_segments_by_gender.png
+        ├── gender_distribution.png
+        ├── improvement_areas.png
+        ├── kmeans_clusters.png
+        ├── most_popular_product_categories.png
+        ├── personalized_recommendation_responses.png
+        ├── product_search_methods.png
+        ├── purchase_categories_bar_chart.png
+        ├── purchase_frequency_distribution.png
+        ├── recommendation_helpfulness_vs_satisfaction.png
+        ├── recommendation_satisfaction_heatmap.png
+        ├── review_helpfulness.png
+        ├── review_reliability.png
+        ├── service_appreciation.png
+        └── shopping_satisfaction_levels.png
 
-The dataset contains:
+---
 
-800 customer responses
-24 attributes
+# 📊 Dataset
 
-The major attributes include:
+The project uses the `Amazon.csv` dataset containing Amazon customer responses.
 
-Attribute	Description
-age	Customer age
-Gender	Customer gender
-Purchase_Frequency	How frequently the customer purchases
-Purchase_Categories	Product categories purchased
-Personalized_Recommendation_Response	Customer response to personalized recommendations
-Browsing_Frequency	Frequency of browsing
-Product_Search_Method	Method used to search for products
-Search_Result_Exploration	Search result exploration behavior
-Customer_Reviews_Importance	Importance given to customer reviews
-Add_to_Cart_Browsing	Add-to-cart behavior
-Cart_Completion_Frequency	Frequency of completing purchases after adding products
-Cart_Abandonment_Factors	Reasons for abandoning carts
-Saveforlater_Frequency	Frequency of saving products for later
-Review_Left	Whether customers leave reviews
-Review_Reliability	Perceived reliability of reviews
-Review_Helpfulness	Perceived helpfulness of reviews
-Personalized_Recommendation_Rating	Rating given to personalized recommendations
-Recommendation_Helpfulness	Perceived helpfulness of recommendations
-Rating_Accuracy	Perceived accuracy of product ratings
-Shopping_Satisfaction	Overall shopping satisfaction
-Service_Appreciation	Service aspects appreciated by customers
-Improvement_Areas	Areas customers believe need improvement
-transaction	Transaction identifier
-🧹 Data Cleaning & Preprocessing
+### Dataset Size
 
-Before performing analysis, the dataset was inspected and cleaned.
+- **800 rows**
+- **24 columns**
 
-1. Dataset Inspection
+### Main Dataset Information
+
+The dataset contains information related to:
+
+- Customer age
+- Gender
+- Purchase frequency
+- Purchase categories
+- Personalized recommendation response
+- Browsing frequency
+- Product search method
+- Search result exploration
+- Customer reviews importance
+- Add-to-cart browsing
+- Cart completion frequency
+- Cart abandonment factors
+- Save-for-later frequency
+- Review left
+- Review reliability
+- Review helpfulness
+- Personalized recommendation rating
+- Recommendation helpfulness
+- Rating accuracy
+- Shopping satisfaction
+- Service appreciation
+- Improvement areas
+- Transaction
+
+---
+
+# 🧹 Task 1: Data Cleaning and Preparation
+
+The dataset was first inspected and prepared before performing the analysis.
+
+### Data Inspection
 
 The following checks were performed:
 
-Dataset shape
-Column names
-Data types
-Descriptive statistics
-Duplicate records
-Missing values
-df.shape
-df.columns
-df.info()
-df.describe(include="all")
-2. Duplicate Check
+- Dataset shape
+- Column names
+- Data types
+- Descriptive statistics
+- Duplicate records
+- Missing values
 
-Duplicate records were checked using:
+### Column Cleaning
 
-df.duplicated().sum()
+Leading and trailing spaces were removed from the column names.
 
-This helps ensure that repeated records do not distort the analysis.
+The dataset columns were standardized as:
 
-3. Column Name Cleaning
+- `Timestamp`
+- `age`
+- `Gender`
+- `Purchase_Frequency`
+- `Purchase_Categories`
+- `Personalized_Recommendation_Response`
+- `Browsing_Frequency`
+- `Product_Search_Method`
+- `Search_Result_Exploration`
+- `Customer_Reviews_Importance`
+- `Add_to_Cart_Browsing`
+- `Cart_Completion_Frequency`
+- `Cart_Abandonment_Factors`
+- `Saveforlater_Frequency`
+- `Review_Left`
+- `Review_Reliability`
+- `Review_Helpfulness`
+- `Personalized_Recommendation_Rating`
+- `Recommendation_Helpfulness`
+- `Rating_Accuracy`
+- `Shopping_Satisfaction`
+- `Service_Appreciation`
+- `Improvement_Areas`
+- `transaction`
 
-Unnecessary whitespace in column names was removed:
+### Missing Value Handling
 
-df.columns = df.columns.str.strip()
-4. Handling Missing Values
+Missing values were checked across the dataset.
 
-Missing values were checked using:
+The missing values in `Product_Search_Method` were handled using the **mode** of the column.
 
-df.isnull().sum()
+### Categorical Data Cleaning
 
-The Product_Search_Method column contained missing values.
+Leading and trailing spaces were removed from categorical columns to standardize their values.
 
-Since this is a categorical variable, the missing values were filled using the mode, which is the most frequently occurring category.
+### Rating Conversion
 
-df["Product_Search_Method"] = df["Product_Search_Method"].fillna(
-    df["Product_Search_Method"].mode()[0]
-)
-5. Categorical Data Cleaning
+The following rating-related columns were converted to numeric data types:
 
-Categorical values were cleaned by removing unnecessary whitespace to ensure consistent category names.
+- `Customer_Reviews_Importance`
+- `Personalized_Recommendation_Rating`
+- `Rating_Accuracy`
+- `Shopping_Satisfaction`
 
-6. Numeric Conversion
+---
 
-Rating-related columns were converted into numeric values so that they could be used for statistical analysis and machine learning.
+# 📈 Task 2: Descriptive Behavior Analysis
 
-🔎 Exploratory Data Analysis
+## 👤 Customer Demographics Analysis
 
-After preprocessing, Exploratory Data Analysis (EDA) was performed to understand customer behavior and identify important patterns.
+### Age Distribution
 
-👥 Customer Demographics
-Age Distribution
+The age distribution of customers was analyzed using descriptive statistics and a histogram.
 
-The age distribution was analyzed using a histogram to understand the spread of customer ages.
+The dataset contains customers between **3 and 67 years of age**, with an average age of approximately **35 years**.
 
-Gender Distribution
+![Age Distribution](images/age_distribution.png)
 
-Customer gender distribution was analyzed using a count plot.
+### Gender Distribution
 
-🛒 Purchase Behavior
-Purchase Frequency
+The gender distribution was analyzed using value counts and a count plot.
 
-Customer purchase frequency was analyzed to understand how often customers shop.
+### Key Findings
 
-The most common purchase frequency was:
+- Male respondents represent the largest group with **209 customers**.
+- The distribution is fairly balanced across the four gender categories.
+- **Prefer not to say** has **192 customers**.
 
-Once a month — 168 customers
+![Gender Distribution](images/gender_distribution.png)
 
-This indicates that a significant portion of customers are moderate or occasional shoppers.
+---
 
-🛍️ Popular Product Categories
+## 🛒 Purchase Frequency Analysis
 
-The Purchase_Categories column contains multiple product categories within individual cells.
+Customer purchase frequency was analyzed to understand how regularly customers purchase products.
 
-The categories were split and exploded so that individual categories could be analyzed separately.
+### Key Findings
 
-Key Finding
+- **Once a month** is the most common purchase frequency with **168 customers**.
+- The five purchase frequency categories are distributed relatively evenly.
+- The dataset contains customers with different shopping patterns.
 
-Clothing and Fashion was the most frequently selected product category, with approximately 450 selections.
+![Purchase Frequency Distribution](images/purchase_frequency_distribution.png)
 
-Other highly selected categories included:
+---
 
-Others
-Home and Kitchen
-Beauty and Personal Care
-Groceries and Gourmet Food
-🔍 Product Search Methods
+## 🛍️ Most Popular Product Categories
 
-Customer product search methods were analyzed to understand how customers discover products.
+The `Purchase_Categories` column contains multiple product categories separated by semicolons.
 
-Key Finding
+The categories were separated using `split()` and expanded using `explode()` so that individual category selections could be counted.
 
-Keyword search was the most common search method, with 327 customers.
+### Key Findings
 
-This highlights the importance of effective search functionality, keyword matching, autocomplete, filtering, and search relevance in an e-commerce platform.
+- **Clothing and Fashion** is the most popular category with **450 selections**.
+- **Others** is the second most selected category with **412 responses**.
+- **Home and Kitchen** has **391 responses**.
+- **Beauty and Personal Care** has **383 responses**.
+- **Groceries and Gourmet Food** has **369 responses**.
 
-🛒 Cart Abandonment Analysis
+Overall, Clothing and Fashion is the most frequently selected shopping category in the dataset.
 
-Cart abandonment factors were analyzed to identify why customers do not complete purchases.
+![Most Popular Product Categories](images/most_popular_product_categories.png)
 
-Major Findings
-Cart Abandonment Factor	Customers
-High shipping costs	224
-Found a better price elsewhere	206
-Changed mind / no longer needed	194
-Other reasons	176
-Business Insight
+---
 
-High shipping costs were the most frequently reported reason for cart abandonment.
+## 🔎 Product Search Methods
 
-Potential business responses could include:
+Different methods used by customers to search for products were analyzed.
 
-Free-shipping thresholds
-Shipping cost optimization
-Competitive pricing
-Abandoned-cart reminders
-Improved checkout experience
-👥 Customer Segmentation
+### Key Findings
 
-Customers were segmented based on their purchase frequency.
+- **Keyword** is the most commonly used search method with **327 customers**.
+- **Categories** is used by **163 customers**.
+- **Filter** is used by **161 customers**.
+- **Others** is used by **149 customers**.
 
-Three customer segments were created:
+This indicates that keyword-based searching is the most commonly used product search method among the surveyed customers.
 
-1. Frequent Buyers
+![Product Search Methods](images/product_search_methods.png)
 
-Customers who purchase:
+---
 
-Multiple times a week
+## 🛒 Cart Abandonment Factors
 
-2. Occasional Shoppers
+The project analyzes the reasons customers abandon their shopping carts.
 
-Customers who purchase:
+### Key Findings
 
-Few times a month
-Once a month
-Once a week
-3. At-Risk Customers
+- **High shipping costs:** 224 responses
+- **Found a better price elsewhere:** 206 responses
+- **Changed my mind or no longer need the item:** 194 responses
+- **Other:** 176 responses
 
-Customers falling into the lower-frequency purchasing category.
+High shipping costs are the leading cart abandonment factor in the analyzed dataset.
 
-Customer Segment Distribution
+![Cart Abandonment Factors](images/cart_abandonment_factors.png)
 
-Customer Segment	Customers
-Occasional Shoppers	485
-Frequent Buyers	159
-At-Risk Customers	156
-Key Finding
+---
 
-Occasional Shoppers represent the largest customer segment.
+## 📊 Mean and Median Analysis
 
-This suggests that most customers in this dataset show moderate purchasing behavior rather than purchasing multiple times per week.
+Mean and median values were calculated for:
 
-👥 Customer Segmentation by Gender
+- Shopping Satisfaction
+- Rating Accuracy
+- Personalized Recommendation Rating
 
-Customer segments were also analyzed across gender categories.
+### Results
 
-The analysis showed that Occasional Shoppers were the largest segment across the gender categories.
+| Metric | Mean | Median |
+|---|---:|---:|
+| Shopping Satisfaction | 3.01 | 3 |
+| Rating Accuracy | 2.97 | 3 |
+| Personalized Recommendation Rating | 2.95 | 3 |
 
-🤖 Machine Learning — K-Means Clustering
-Why K-Means?
+The mean and median values are close to each other, with responses centered around the middle of the rating scale.
 
-K-Means was used to identify groups of customers with similar satisfaction and rating patterns.
+---
 
-K-Means is an Unsupervised Machine Learning algorithm because there are no predefined cluster labels.
+## 📋 Summary Statistics
 
-The algorithm discovers groups based on similarities between customers.
+The numerical variables analyzed include:
 
-Features Used for Clustering
+- Age
+- Customer Reviews Importance
+- Personalized Recommendation Rating
+- Rating Accuracy
+- Shopping Satisfaction
 
-Four numerical variables were selected:
+### Key Findings
 
-Shopping_Satisfaction
-Customer_Reviews_Importance
-Rating_Accuracy
-Personalized_Recommendation_Rating
+- The dataset contains **800 customer responses**.
+- Customer ages range from **3 to 67 years**.
+- The average customer age is approximately **35 years**.
+- Average scores for the rating-related variables are close to **3**.
+- Overall, the numerical variables show moderate customer perceptions and satisfaction levels.
 
-Each customer is represented using these four values.
+---
 
-K-Means then groups customers whose values are similar across these dimensions.
+# 👥 Task 3: Customer Segmentation and Profiling
 
-K-Means Configuration
-from sklearn.cluster import KMeans
+## Purchase Frequency and Shopping Satisfaction
 
-kmeans = KMeans(
-    n_clusters=3,
-    random_state=42,
-    n_init=10
-)
+Purchase frequency and shopping satisfaction were analyzed together using frequency counts and cross-tabulation.
 
-df["Cluster"] = kmeans.fit_predict(X)
-Parameters
+This analysis helps examine how shopping satisfaction is distributed across different purchase-frequency categories.
 
-n_clusters=3
+---
 
-The algorithm was instructed to create three clusters.
+## Customer Profiles
 
-random_state=42
+Customers were grouped into three segments using their purchase frequency.
 
-Used to make the initialization reproducible.
+### 1. Frequent Buyers
 
-n_init=10
+Customers whose purchase frequency is:
 
-Allows K-Means to try multiple initial centroid configurations and select a better solution.
+**Multiple times a week**
 
-Cluster Results
+- **159 customers**
 
-The three clusters contained:
+### 2. Occasional Shoppers
 
-Cluster	Customers
-Cluster 0	302
-Cluster 1	258
-Cluster 2	240
+Customers whose purchase frequency is:
 
-The clusters represent different customer behavior patterns based on:
+- Few times a month
+- Once a month
+- Once a week
 
-Shopping satisfaction
-Review importance
-Rating accuracy
-Personalized recommendation ratings
-Important Note
+- **485 customers**
 
-K-Means itself produces labels such as Cluster 0, Cluster 1, and Cluster 2. These labels do not automatically mean "high," "moderate," or "low" satisfaction.
+### 3. At-Risk Customers
 
-The business interpretation of each cluster should be based on the average feature values of the customers within that cluster.
+Customers belonging to the remaining lower-frequency purchase category.
 
-⭐ Customer Satisfaction Analysis
+- **156 customers**
 
-Shopping satisfaction was analyzed using customer satisfaction ratings.
+### Key Findings
 
-The average shopping satisfaction was approximately:
+- Occasional Shoppers form the largest customer segment with **485 customers**.
+- Frequent Buyers account for **159 customers**.
+- At-Risk Customers account for **156 customers**.
 
-3.01 / 5
+![Customer Segments](images/customer_segments.png)
 
-The median was:
+---
 
-3 / 5
+## Demographic Analysis of Customer Segments
 
-This indicates that customer satisfaction in the dataset is centered around the middle of the rating scale.
+Customer segments were further analyzed by gender.
 
-⭐ Rating Accuracy
+### Key Findings
 
-The average rating accuracy score was approximately:
+- Occasional Shoppers represent the largest customer segment across all gender categories.
+- Male customers form the highest number of Frequent Buyers with **46 customers**.
+- Female customers account for the highest number of Occasional Shoppers with **131 customers**.
+- The At-Risk Customer segment is relatively balanced across the gender categories.
 
-2.97 / 5
+![Customer Segments by Gender](images/customer_segments_by_gender.png)
 
-The median was:
+---
 
-3 / 5
+## 🤖 K-Means Clustering
 
-This provides insight into how customers perceive the accuracy of product ratings.
+K-Means clustering was applied to group customers based on selected customer experience and rating-related features.
 
-🤝 Personalized Recommendations
+### Features Used
 
-Personalized recommendation responses were analyzed to understand whether customers feel that recommendations are relevant to them.
+The model uses:
 
-The responses were distributed across:
+- `Shopping_Satisfaction`
+- `Customer_Reviews_Importance`
+- `Rating_Accuracy`
+- `Personalized_Recommendation_Rating`
 
-Yes
-No
-Sometimes
+### Model Configuration
 
-This suggests that customer perceptions of personalized recommendations are mixed.
+- **Number of clusters:** 3
+- **Random state:** 42
+- **Number of initializations:** 10
 
-💡 Recommendation Helpfulness vs Shopping Satisfaction
+The model generates three cluster labels:
+
+- Cluster 0
+- Cluster 1
+- Cluster 2
+
+### Cluster Sizes
+
+| Cluster | Number of Customers |
+|---|---:|
+| Cluster 0 | 302 |
+| Cluster 1 | 258 |
+| Cluster 2 | 240 |
+
+The cluster numbers are algorithm-generated labels. They do not automatically represent high, medium, or low satisfaction. The meaning of each cluster should be determined by examining the feature values within each cluster.
+
+### How K-Means Was Applied
+
+Each customer was represented using four selected features:
+
+- Shopping Satisfaction
+- Customer Reviews Importance
+- Rating Accuracy
+- Personalized Recommendation Rating
+
+K-Means then groups customers according to similarity across these features.
+
+![K-Means Customer Clusters](images/kmeans_clusters.png)
+
+---
+
+# ⭐ Task 4: Recommendation and Review Insights
+
+## Recommendation Helpfulness and Shopping Satisfaction
 
 The relationship between recommendation helpfulness and shopping satisfaction was analyzed using cross-tabulation and visualization.
 
-This analysis helps examine the distribution of shopping satisfaction across different levels of perceived recommendation helpfulness.
+### Key Findings
 
-⭐ Review Analysis
+- Recommendation helpfulness responses are distributed across all shopping satisfaction levels.
+- Customers selecting **Yes**, **Sometimes**, and **No** all reported satisfaction ratings ranging from **1 to 5**.
+- No single recommendation-helpfulness category dominates one specific satisfaction level.
+- The analysis does not show a strong relationship between recommendation helpfulness and overall shopping satisfaction.
 
-Customer reviews were analyzed from multiple perspectives.
+![Recommendation Helpfulness vs Shopping Satisfaction](images/recommendation_helpfulness_vs_satisfaction.png)
 
-Review Reliability
+---
 
-The responses show different levels of customer trust in product reviews.
+## Review Reliability
 
-Review Helpfulness
+Customer perceptions of review reliability were analyzed.
 
-The results were:
+### Key Findings
 
-Response	Customers
-No	289
-Yes	257
-Sometimes	254
+- **Heavily** is the most common response with **167 customers**.
+- **Never** has **166 customers**.
+- The remaining response categories are distributed relatively evenly.
 
-The results indicate that review helpfulness is not perceived consistently by all customers.
+![Review Reliability](images/review_reliability.png)
 
-🚚 Service Appreciation
+---
 
-Customers were asked which aspects of Amazon's service they appreciate.
+## Review Helpfulness
 
-Key Findings
+Customer opinions about the helpfulness of reviews were analyzed.
 
-Customer service and quick delivery were among the commonly appreciated service aspects.
+### Results
 
-This indicates that service quality and delivery experience are important parts of the customer experience represented in the dataset.
+- **No:** 289 customers
+- **Yes:** 257 customers
+- **Sometimes:** 254 customers
 
-🔧 Improvement Areas
+The responses are relatively balanced, although **No** is the most common response.
 
-Customers were also analyzed based on areas where they believe Amazon could improve.
+![Review Helpfulness](images/review_helpfulness.png)
 
-Key Finding
+---
 
-User Interface was one of the most frequently mentioned improvement areas, with 56 responses.
+## Personalized Recommendation Analysis
 
-Other improvement areas included:
+Customer responses to personalized recommendations were analyzed.
 
-Product quality or accuracy
-Refund-related issues
-Shipping speed
-Customer service responsiveness
-Product recommendations
-📌 Key Business Insights
-1. Product Category Strategy
+### Results
 
-Clothing and Fashion was the most frequently selected product category.
+- **Yes:** 278 customers
+- **No:** 272 customers
+- **Sometimes:** 250 customers
 
-This can help guide:
+The responses are relatively balanced across the three categories.
 
-Product promotions
-Inventory planning
-Recommendation strategies
-Marketing campaigns
-2. Search Optimization
+![Personalized Recommendation Responses](images/personalized_recommendation_responses.png)
 
-Keyword search was the most commonly used search method.
+---
 
-Improving:
+## Service Appreciation
 
-Search relevance
-Autocomplete
-Keyword matching
-Search filters
+The project analyzes which services customers appreciate most.
 
-could improve product discovery.
+### Key Findings
 
-3. Cart Abandonment
+- **Customer service:** 181 responses
+- **Quick delivery:** 104 responses
+- Wide product selection, competitive prices, and user-friendly website/app experience are also represented in the responses.
 
-High shipping costs were the leading reported reason for cart abandonment.
+Customer service and quick delivery are among the most frequently appreciated services.
 
-Reducing shipping-related friction could potentially improve checkout completion.
+![Service Appreciation](images/service_appreciation.png)
 
-4. Customer Segmentation
+---
 
-The majority of customers were Occasional Shoppers.
+## Areas for Improvement
 
-Customer segments can support more targeted strategies instead of treating every customer identically.
+Customer feedback regarding areas that require improvement was analyzed.
 
-5. Customer Satisfaction
+### Key Findings
 
-Average shopping satisfaction was approximately 3/5, suggesting room for improving the overall shopping experience represented in the dataset.
+- **User Interface** is one of the frequently mentioned improvement areas with **56 responses**.
+- Product quality and accuracy are also identified as improvement areas.
+- Refund issues are another reported concern.
+- Shipping speed, customer service responsiveness, and product recommendations are also represented in the responses.
+- Some customers reported no specific problems.
 
-6. Recommendations
+![Improvement Areas](images/improvement_areas.png)
 
-Customer responses to personalized recommendations were mixed, indicating opportunities to improve recommendation relevance.
+---
 
-7. Reviews
+# 📊 Task 5: Visualization and Reporting
 
-Review helpfulness and reliability showed mixed responses, highlighting the importance of review quality and discoverability.
+The project contains visualizations for the major areas of analysis, including:
 
-8. User Experience
+- Age distribution
+- Gender distribution
+- Purchase frequency
+- Browsing frequency
+- Purchase categories
+- Product search methods
+- Cart abandonment
+- Customer segments
+- Customer segments by gender
+- Shopping satisfaction
+- Review reliability
+- Review helpfulness
+- Personalized recommendation responses
+- Recommendation helpfulness and satisfaction
+- Service appreciation
+- Improvement areas
+- K-Means clusters
 
-User interface improvements were among the frequently mentioned customer requests.
+---
 
-📈 Visualizations
+# 💡 Key Business Insights
 
-The project contains visualizations covering:
+- **Clothing and Fashion** has the highest number of product-category selections.
+- **Keyword Search** is the most commonly used product search method.
+- **High shipping costs** are the most frequently recorded cart abandonment factor.
+- **Once a month** is the most common purchase frequency.
+- **Occasional Shoppers** form the largest customer segment.
+- **Customer service** is one of the most appreciated services.
+- **Quick delivery** is another highly appreciated service.
+- **User Interface** is one of the frequently mentioned improvement areas.
+- Customer opinions about review helpfulness and reliability vary across the dataset.
+- Personalized recommendation responses are relatively balanced between Yes, No, and Sometimes.
+- Shopping Satisfaction, Rating Accuracy, and Personalized Recommendation Rating have average values close to 3.
+- K-Means clustering identifies three groups of customers based on the selected satisfaction and rating-related variables.
 
-Age distribution
-Gender distribution
-Purchase frequency
-Product categories
-Product search methods
-Cart abandonment
-Customer segments
-Customer segments by gender
-K-Means clusters
-Recommendation helpfulness
-Recommendation satisfaction
-Review reliability
-Review helpfulness
-Personalized recommendations
-Service appreciation
-Improvement areas
-Shopping satisfaction
-Browsing frequency
-🧠 Skills Demonstrated
-Python
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Scikit-learn
-Data Cleaning
-Data Preprocessing
-Exploratory Data Analysis
-Statistical Analysis
-Data Visualization
-Customer Segmentation
-Unsupervised Machine Learning
-K-Means Clustering
-Customer Behavior Analysis
-Business Insight Generation
-⚠️ Project Limitations
-The dataset contains 800 customer responses, so the findings represent this dataset rather than all Amazon customers.
-The dataset is primarily customer-response/survey based rather than detailed product-level transaction data.
-Traditional association-rule mining such as Apriori or FP-Growth was not implemented.
-The K-Means analysis uses four rating-related features and should be interpreted within the context of those features.
-The project does not implement a production recommendation engine.
-Purchase-frequency segmentation and K-Means clustering are two different approaches and should not be treated as the same segmentation method.
-🚀 Future Improvements
-1. Traditional Market Basket Analysis
+---
 
-Add transaction-level product data and implement:
+# 🔄 Project Workflow
 
-Apriori
-FP-Growth
-Association Rules
-Support
-Confidence
-Lift
-
-This would allow identification of products that are frequently purchased together.
-
-Example:
-
-Product A → Product B
-2. Improved K-Means Analysis
-
-Future versions can:
-
-Standardize numerical features using StandardScaler
-Test different values of K
-Use the Elbow Method
-Calculate Silhouette Score
-Profile each cluster using feature averages
-3. Recommendation System
-
-Build a recommendation engine using:
-
-Association rules
-Collaborative filtering
-Content-based filtering
-4. Predictive Analytics
-
-Future versions could predict:
-
-Customer churn
-Cart abandonment
-Customer satisfaction
-Purchase probability
-5. Interactive Dashboard
-
-The analysis could be converted into an interactive dashboard using:
-
-Power BI
-Streamlit
-Tableau
-💻 How to Run the Project
-1. Clone the repository
-git clone https://github.com/YOUR-USERNAME/Amazon-Market-Basket-Analysis.git
-2. Navigate to the project folder
-cd Amazon-Market-Basket-Analysis
-3. Install required libraries
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-4. Launch Jupyter Notebook
-jupyter notebook
-5. Open the notebook
-Market_Basket_Analysis_Amazon.ipynb
-6. Run the notebook
-
-Make sure Amazon.csv is located in the same project directory.
-
-📌 Project Workflow
-Raw Amazon Customer Data
-          ↓
+Amazon Customer Dataset
+↓
 Data Inspection
-          ↓
-Data Cleaning & Preprocessing
-          ↓
-Exploratory Data Analysis
-          ↓
-Customer Behavior Analysis
-          ↓
+↓
+Data Cleaning and Preparation
+↓
+Descriptive Behavior Analysis
+↓
+Customer Demographics Analysis
+↓
+Purchase Frequency Analysis
+↓
+Product Category Analysis
+↓
+Product Search Analysis
+↓
+Cart Abandonment Analysis
+↓
 Customer Segmentation
-          ↓
+↓
 K-Means Clustering
-          ↓
-Review & Recommendation Analysis
-          ↓
-Visualization
-          ↓
+↓
+Recommendation and Review Analysis
+↓
+Service and Improvement Analysis
+↓
+Visualization and Reporting
+↓
 Business Insights
-📝 Conclusion
 
-This project demonstrates how Python and Machine Learning can be used to transform customer data into meaningful business insights.
+---
 
-By analyzing purchasing behavior, product categories, search methods, cart abandonment, reviews, recommendations, satisfaction, and customer segments, the project provides a broader understanding of e-commerce customer behavior.
+# 🧰 Skills Demonstrated
 
-The K-Means clustering component adds an unsupervised machine-learning perspective by identifying groups of customers with similar rating and satisfaction patterns.
+- Python
+- Pandas
+- NumPy
+- Data Cleaning
+- Data Preprocessing
+- Exploratory Data Analysis
+- Data Visualization
+- Customer Behavior Analysis
+- Customer Segmentation
+- Unsupervised Machine Learning
+- K-Means Clustering
+- Statistical Analysis
+- Business Insight Generation
 
-The analysis can help an e-commerce business understand customer needs, improve personalization, reduce cart abandonment, enhance the shopping experience, and identify areas for improvement.
+---
 
-👩‍💻 Author
+# ⚠️ Project Scope and Limitation
 
-Suhani
+Although the project is titled **Market Basket Analysis with Python - Amazon**, the implemented analysis primarily focuses on Amazon customer shopping behavior, purchasing categories, customer segmentation, satisfaction, reviews, recommendations, cart abandonment, and customer experience.
 
-Aspiring Data & AI Professional
+Traditional transaction-level association-rule mining techniques such as **Apriori, FP-Growth, Support, Confidence, and Lift** are not implemented in the current notebook.
 
-Technologies Used
+The project instead uses customer behavior analysis and K-Means clustering to understand customer patterns and groups.
 
-Python Pandas NumPy Matplotlib Seaborn Scikit-learn Data Analysis Machine Learning K-Means Customer Segmentation Data Visualization
+---
+
+# 🚀 Future Improvements
+
+Possible future extensions include:
+
+- Implementing traditional association-rule mining
+- Using transaction-level product data
+- Applying Apriori or FP-Growth
+- Calculating Support, Confidence, and Lift
+- Performing deeper customer cluster profiling
+- Evaluating different numbers of K-Means clusters
+- Building an interactive dashboard
+- Developing a recommendation system using transaction-level purchase data
+
+---
+
+# ▶️ How to Run the Project
+
+1. Clone or download the repository.
+2. Keep `Amazon.csv` and `Market_Basket_Analysis_Amazon.ipynb` in the project directory.
+3. Open `Market_Basket_Analysis_Amazon.ipynb` using Jupyter Notebook or JupyterLab.
+4. Install the required Python libraries if they are not already installed.
+5. Run the notebook cells from beginning to end.
+6. Review the generated analysis and visualizations.
+
+---
+
+# 📌 Conclusion
+
+This project demonstrates the use of Python for analyzing Amazon customer shopping behavior and extracting meaningful insights from customer data.
+
+The project combines data cleaning, exploratory analysis, customer segmentation, K-Means clustering, recommendation analysis, review analysis, visualization, and business insight generation.
+
+The analysis provides a structured view of customer purchasing patterns, product discovery behavior, cart abandonment factors, satisfaction levels, customer segments, and areas for improving the overall customer shopping experience.
+
+---
+
+# 👩‍💻 Author
+
+**Suhani**
+
